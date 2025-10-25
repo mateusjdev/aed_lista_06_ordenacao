@@ -68,6 +68,15 @@ namespace aed_lista_06_ordenacao_template
             merge.Ordernar();
             Console.WriteLine($"Esta ordenado: {merge.ConferirOrdenacao()}\n");
 
+            // QUICK
+            Console.WriteLine("# Ordenação via Quick\n");
+
+            int[] vetorQuick = GerarCopiaVetor(vetor);
+            var quick = new OrdernadorQuick(vetorQuick);
+            Console.WriteLine($"Esta ordenado: {quick.ConferirOrdenacao()}");
+            quick.Ordernar();
+            Console.WriteLine($"Esta ordenado: {quick.ConferirOrdenacao()}\n");
+          
             Console.WriteLine("Presscione qualquer tecla para continuar");
             Console.ReadKey();
         }
