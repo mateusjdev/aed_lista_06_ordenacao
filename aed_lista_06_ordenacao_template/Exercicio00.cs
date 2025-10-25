@@ -4,9 +4,20 @@ namespace aed_lista_06_ordenacao_template
 {
     internal class Program
     {
-        const int TAMANHO_VETOR = 100000;
+        const int TAMANHO_VETOR = 10000;
 
-        static void Main()
+        public static int[] GerarCopiaVetor(int[] origem)
+        {
+            int vLength = origem.Length;
+            int[] destino = new int[vLength];
+            for (int i = 0; i < vLength; i++)
+            {
+                destino[i] = origem[i];
+            }
+            return destino;
+        }
+
+        public static int[] GerarVetor(int tamanho)
         {
             int[] vetor = new int[TAMANHO_VETOR];
             var random = new Random();
@@ -14,12 +25,37 @@ namespace aed_lista_06_ordenacao_template
             {
                 vetor[i] = random.Next();
             }
+            return vetor;
+        }
 
-            var selecao = new OrdernadorSelecao(vetor);
+        static void Main()
+        {
+            int[] vetor = GerarVetor(TAMANHO_VETOR);
+
+            // SELEÇÂO
+
+            int[] vetorSelecao = GerarCopiaVetor(vetor);
+            var selecao = new OrdernadorSelecao(vetorSelecao);
             Console.WriteLine($"Esta ordenado: {selecao.ConferirOrdenacao()}");
             selecao.Ordernar();
             Console.WriteLine($"Esta ordenado: {selecao.ConferirOrdenacao()}");
 
+            // INSERÇÂO
+
+            int[] vetorInsercao = GerarCopiaVetor(vetor);
+            var insercao = new OrdernadorInsercao(vetorInsercao);
+            Console.WriteLine($"Esta ordenado: {insercao.ConferirOrdenacao()}");
+            insercao.Ordernar();
+            Console.WriteLine($"Esta ordenado: {insercao.ConferirOrdenacao()}");
+
+            // BOLHA
+            /*
+            int[] vetorBolha = GerarCopiaVetor(vetor);
+            var bolha = new OrdernadorBolha(vetorBolha);
+            Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}");
+            bolha.Ordernar();
+            Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}");
+            */
             Console.WriteLine("\nPresscione qualquer tecla para continuar");
             Console.ReadKey();
         }
