@@ -33,30 +33,33 @@ namespace aed_lista_06_ordenacao_template
             int[] vetor = GerarVetor(TAMANHO_VETOR);
 
             // SELEÇÂO
+            Console.WriteLine("# Ordenação via Seleção\n");
 
             int[] vetorSelecao = GerarCopiaVetor(vetor);
             var selecao = new OrdernadorSelecao(vetorSelecao);
             Console.WriteLine($"Esta ordenado: {selecao.ConferirOrdenacao()}");
             selecao.Ordernar();
-            Console.WriteLine($"Esta ordenado: {selecao.ConferirOrdenacao()}");
+            Console.WriteLine($"Esta ordenado: {selecao.ConferirOrdenacao()}\n");
 
             // INSERÇÂO
+            Console.WriteLine("# Ordenação via Inserção\n");
 
             int[] vetorInsercao = GerarCopiaVetor(vetor);
             var insercao = new OrdernadorInsercao(vetorInsercao);
             Console.WriteLine($"Esta ordenado: {insercao.ConferirOrdenacao()}");
             insercao.Ordernar();
-            Console.WriteLine($"Esta ordenado: {insercao.ConferirOrdenacao()}");
+            Console.WriteLine($"Esta ordenado: {insercao.ConferirOrdenacao()}\n");
 
             // BOLHA
-            /*
+            Console.WriteLine("# Ordenação via Bolha\n");
+            
             int[] vetorBolha = GerarCopiaVetor(vetor);
             var bolha = new OrdernadorBolha(vetorBolha);
             Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}");
             bolha.Ordernar();
-            Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}");
-            */
-            Console.WriteLine("\nPresscione qualquer tecla para continuar");
+            Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}\n");
+            
+            Console.WriteLine("Presscione qualquer tecla para continuar");
             Console.ReadKey();
         }
     }
