@@ -52,13 +52,22 @@ namespace aed_lista_06_ordenacao_template
 
             // BOLHA
             Console.WriteLine("# Ordenação via Bolha\n");
-            
+
             int[] vetorBolha = GerarCopiaVetor(vetor);
             var bolha = new OrdernadorBolha(vetorBolha);
             Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}");
             bolha.Ordernar();
             Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}\n");
-            
+
+            // MERGE
+            Console.WriteLine("# Ordenação via Merge\n");
+
+            int[] vetorMerge = GerarCopiaVetor(vetor);
+            var merge = new OrdernadorMerge(vetorMerge);
+            Console.WriteLine($"Esta ordenado: {merge.ConferirOrdenacao()}");
+            merge.Ordernar();
+            Console.WriteLine($"Esta ordenado: {merge.ConferirOrdenacao()}\n");
+
             Console.WriteLine("Presscione qualquer tecla para continuar");
             Console.ReadKey();
         }
