@@ -2,11 +2,11 @@
 
 namespace aed_lista_06_ordenacao_template
 {
-    internal class OrdernadorMerge
+    internal class OrdenadorMerge
     {
         private int[] _vetor;
 
-        public OrdernadorMerge(int[] vetor)
+        public OrdenadorMerge(int[] vetor)
         {
             _vetor = vetor;
         }

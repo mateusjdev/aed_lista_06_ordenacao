@@ -3,11 +3,11 @@ using System.Net;
 
 namespace aed_lista_06_ordenacao_template
 {
-    internal class OrdernadorQuick
+    internal class OrdenadorQuick
     {
         private int[] _vetor;
 
-        public OrdernadorQuick(int[] vetor)
+        public OrdenadorQuick(int[] vetor)
         {
             _vetor = vetor;
         }

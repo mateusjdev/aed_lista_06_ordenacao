@@ -2,11 +2,11 @@
 
 namespace aed_lista_06_ordenacao_template
 {
-    internal class OrdernadorBolha
+    internal class OrdenadorSelecao
     {
         private int[] _vetor;
 
-        public OrdernadorBolha(int[] vetor)
+        public OrdenadorSelecao(int[] vetor)
         {
             _vetor = vetor;
         }
@@ -37,16 +37,19 @@ namespace aed_lista_06_ordenacao_template
 
         public void Ordernar()
         {
-            int vLength = _vetor.Length;
-            for (int i = 0; i < vLength - 1; i++)
+            bool estaOrdenado = ConferirOrdenacao();
+            int vLenght = _vetor.Length;
+            for (int i = 0; i < vLenght; i++)
             {
-                for (int j = vLength - 1; j > i; j--)
+                int iMenor = i;
+                for (int j = i + 1; j < vLenght; j++)
                 {
-                    if (_vetor[j] < _vetor[j - 1])
-                    {
-                        Trocar(_vetor, j, j - 1);
+                    if (_vetor[j] < _vetor[iMenor])
+                    { 
+                        iMenor = j;
                     }
                 }
+                Trocar(_vetor, i, iMenor);
             }
         }
     }

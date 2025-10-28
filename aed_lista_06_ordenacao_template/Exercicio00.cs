@@ -36,7 +36,7 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine("# Ordenação via Seleção\n");
 
             int[] vetorSelecao = GerarCopiaVetor(vetor);
-            var selecao = new OrdernadorSelecao(vetorSelecao);
+            var selecao = new OrdenadorSelecao(vetorSelecao);
             Console.WriteLine($"Esta ordenado: {selecao.ConferirOrdenacao()}");
             selecao.Ordernar();
             Console.WriteLine($"Esta ordenado: {selecao.ConferirOrdenacao()}\n");
@@ -45,7 +45,7 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine("# Ordenação via Inserção\n");
 
             int[] vetorInsercao = GerarCopiaVetor(vetor);
-            var insercao = new OrdernadorInsercao(vetorInsercao);
+            var insercao = new OrdenadorInsercao(vetorInsercao);
             Console.WriteLine($"Esta ordenado: {insercao.ConferirOrdenacao()}");
             insercao.Ordernar();
             Console.WriteLine($"Esta ordenado: {insercao.ConferirOrdenacao()}\n");
@@ -54,7 +54,7 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine("# Ordenação via Bolha\n");
 
             int[] vetorBolha = GerarCopiaVetor(vetor);
-            var bolha = new OrdernadorBolha(vetorBolha);
+            var bolha = new OrdenadorBolha(vetorBolha);
             Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}");
             bolha.Ordernar();
             Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}\n");
@@ -63,7 +63,7 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine("# Ordenação via Merge\n");
 
             int[] vetorMerge = GerarCopiaVetor(vetor);
-            var merge = new OrdernadorMerge(vetorMerge);
+            var merge = new OrdenadorMerge(vetorMerge);
             Console.WriteLine($"Esta ordenado: {merge.ConferirOrdenacao()}");
             merge.Ordernar();
             Console.WriteLine($"Esta ordenado: {merge.ConferirOrdenacao()}\n");
@@ -72,7 +72,7 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine("# Ordenação via Quick\n");
 
             int[] vetorQuick = GerarCopiaVetor(vetor);
-            var quick = new OrdernadorQuick(vetorQuick);
+            var quick = new OrdenadorQuick(vetorQuick);
             Console.WriteLine($"Esta ordenado: {quick.ConferirOrdenacao()}");
             quick.Ordernar();
             Console.WriteLine($"Esta ordenado: {quick.ConferirOrdenacao()}\n");
