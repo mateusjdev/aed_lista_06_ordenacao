@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace aed_lista_06_ordenacao_template
 {
@@ -76,7 +77,16 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine($"Esta ordenado: {quick.ConferirOrdenacao()}");
             quick.Ordernar();
             Console.WriteLine($"Esta ordenado: {quick.ConferirOrdenacao()}\n");
-          
+
+            // HEAP
+            Console.WriteLine("# Ordenação via Heap\n");
+
+            int[] vetorHeap = GerarCopiaVetor(vetor);
+            var heap = new OrdenadorQuick(vetorHeap);
+            Console.WriteLine($"Esta ordenado: {heap.ConferirOrdenacao()}");
+            heap.Ordernar();
+            Console.WriteLine($"Esta ordenado: {heap.ConferirOrdenacao()}\n");
+
             Console.WriteLine("Presscione qualquer tecla para continuar");
             Console.ReadKey();
         }
