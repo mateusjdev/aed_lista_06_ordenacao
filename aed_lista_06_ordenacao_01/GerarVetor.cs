@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace aed_lista_06_ordenacao_template
+namespace aed_lista_06_ordenacao_01
 {
     internal class GerarVetor
     {
@@ -30,12 +26,50 @@ namespace aed_lista_06_ordenacao_template
             return destino;
         }
 
+        public static int[] GerarVetorIntComDisposicao(Disposicao disposicao, int tamanho)
+        {
+            int[] vetor;
+            switch (disposicao)
+            {
+                case Disposicao.Aleatorio:
+                    vetor = GerarVetorIntAleatorio(tamanho);
+                    break;
+                case Disposicao.Crescente:
+                    vetor = GerarVetorIntCrescente(tamanho);
+                    break;
+                case Disposicao.Decrescente:
+                    vetor = GerarVetorIntDecrescente(tamanho);
+                    break;
+                default:
+                    vetor = GerarVetorIntAleatorio(tamanho);
+                    break;
+            }
+            return vetor;
+        }
+
+        public static decimal[] GerarVetorDecimalComDisposicao(Disposicao disposicao, int tamanho)
+        {
+            decimal[] vetor;
+            switch (disposicao)
+            {
+                case Disposicao.Aleatorio:
+                    vetor = GerarVetorDecimalAleatorio(tamanho);
+                    break;
+                case Disposicao.Crescente:
+                    vetor = GerarVetorDecimalCrescente(tamanho);
+                    break;
+                case Disposicao.Decrescente:
+                    vetor = GerarVetorDecimalDecrescente(tamanho);
+                    break;
+                default:
+                    vetor = GerarVetorDecimalAleatorio(tamanho);
+                    break;
+            }
+            return vetor;
+        }
+
         public static int[] GerarVetorIntCrescente(int tamanho)
         {
-            if (tamanho < 0)
-            {
-                throw new Exception();
-            }
             if (tamanho < 0)
             {
                 throw new Exception();

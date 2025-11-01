@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace aed_lista_06_ordenacao_template
+namespace aed_lista_06_ordenacao_01
 {
     public enum Disposicao
     {
@@ -42,25 +42,10 @@ namespace aed_lista_06_ordenacao_template
     {
         const int QUANTIDADE_EXECUCOES = 1;
 
-        public static void Etapa03InteiroTempo(Disposicao disposicao, int tamanho)
+        public static void BenchmarkInteiroTempo(Disposicao disposicao, int tamanho)
         {
             StatusLogger.Params(disposicao, tamanho, Execucao.Tempo, Tipo.Inteiro, QUANTIDADE_EXECUCOES);
-            int[] vetor;
-            switch (disposicao)
-            {
-                case Disposicao.Aleatorio:
-                    vetor = GerarVetor.GerarVetorIntAleatorio(tamanho);
-                    break;
-                case Disposicao.Crescente:
-                    vetor = GerarVetor.GerarVetorIntCrescente(tamanho);
-                    break;
-                case Disposicao.Decrescente:
-                    vetor = GerarVetor.GerarVetorIntDecrescente(tamanho);
-                    break;
-                default:
-                    vetor = GerarVetor.GerarVetorIntAleatorio(tamanho);
-                    break;
-            }
+            var vetor = GerarVetor.GerarVetorIntComDisposicao(disposicao, tamanho);
 
             Stopwatch stopwatch = new Stopwatch();
             TimeSpan[] tempos = new TimeSpan[QUANTIDADE_EXECUCOES];
@@ -164,25 +149,10 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine();
         }
 
-        public static void Etapa03InteiroDepuracao(Disposicao disposicao, int tamanho)
+        public static void BenchmarkInteiroDepuracao(Disposicao disposicao, int tamanho)
         {
             StatusLogger.Params(disposicao, tamanho, Execucao.Depuracao, Tipo.Inteiro, QUANTIDADE_EXECUCOES);
-            int[] vetor;
-            switch (disposicao)
-            {
-                case Disposicao.Aleatorio:
-                    vetor = GerarVetor.GerarVetorIntAleatorio(tamanho);
-                    break;
-                case Disposicao.Crescente:
-                    vetor = GerarVetor.GerarVetorIntCrescente(tamanho);
-                    break;
-                case Disposicao.Decrescente:
-                    vetor = GerarVetor.GerarVetorIntDecrescente(tamanho);
-                    break;
-                default:
-                    vetor = GerarVetor.GerarVetorIntAleatorio(tamanho);
-                    break;
-            }
+            var vetor = GerarVetor.GerarVetorIntComDisposicao(disposicao, tamanho);
 
             Int64 comparacoes = 0;
             Int64 movimentacoes = 0;
@@ -196,7 +166,7 @@ namespace aed_lista_06_ordenacao_template
                 {
                     throw new Exception("Ordenação não foi realizada!");
                 }
-                comparacoes  = ordenador.Comparacoes;
+                comparacoes = ordenador.Comparacoes;
                 movimentacoes = ordenador.Movimentacoes;
             }
             // TODO: Calcular média das execuções
@@ -280,25 +250,10 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine();
         }
 
-        public static void Etapa03DecimalTempo(Disposicao disposicao, int tamanho)
+        public static void BenchmarkDecimalTempo(Disposicao disposicao, int tamanho)
         {
             StatusLogger.Params(disposicao, tamanho, Execucao.Tempo, Tipo.Decimal, QUANTIDADE_EXECUCOES);
-            decimal[] vetor;
-            switch (disposicao)
-            {
-                case Disposicao.Aleatorio:
-                    vetor = GerarVetor.GerarVetorDecimalAleatorio(tamanho);
-                    break;
-                case Disposicao.Crescente:
-                    vetor = GerarVetor.GerarVetorDecimalCrescente(tamanho);
-                    break;
-                case Disposicao.Decrescente:
-                    vetor = GerarVetor.GerarVetorDecimalDecrescente(tamanho);
-                    break;
-                default:
-                    vetor = GerarVetor.GerarVetorDecimalAleatorio(tamanho);
-                    break;
-            }
+            var vetor = GerarVetor.GerarVetorDecimalComDisposicao(disposicao, tamanho);
 
             Stopwatch stopwatch = new Stopwatch();
             TimeSpan[] tempos = new TimeSpan[QUANTIDADE_EXECUCOES];
@@ -402,25 +357,10 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine();
         }
 
-        public static void Etapa03DecimalDepuracao(Disposicao disposicao, int tamanho)
+        public static void BenchmarkDecimalDepuracao(Disposicao disposicao, int tamanho)
         {
             StatusLogger.Params(disposicao, tamanho, Execucao.Depuracao, Tipo.Decimal, QUANTIDADE_EXECUCOES);
-            decimal[] vetor;
-            switch (disposicao)
-            {
-                case Disposicao.Aleatorio:
-                    vetor = GerarVetor.GerarVetorDecimalAleatorio(tamanho);
-                    break;
-                case Disposicao.Crescente:
-                    vetor = GerarVetor.GerarVetorDecimalCrescente(tamanho);
-                    break;
-                case Disposicao.Decrescente:
-                    vetor = GerarVetor.GerarVetorDecimalDecrescente(tamanho);
-                    break;
-                default:
-                    vetor = GerarVetor.GerarVetorDecimalAleatorio(tamanho);
-                    break;
-            }
+            var vetor = GerarVetor.GerarVetorDecimalComDisposicao(disposicao, tamanho);
 
             Int64 comparacoes = 0;
             Int64 movimentacoes = 0;
@@ -518,28 +458,20 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine();
         }
 
-        public static void Etapa02(Disposicao disposicao, int tamanho)
-        {
-            Etapa03InteiroTempo(disposicao, tamanho);
-            Etapa03InteiroDepuracao(disposicao, tamanho);
-            Etapa03DecimalTempo(disposicao, tamanho);
-            Etapa03DecimalDepuracao(disposicao, tamanho);
-        }
-
-        public static void Etapa01()
+        static void Main()
         {
             foreach (var tamanho in Enum.GetValues(typeof(Tamanho)))
             {
                 foreach (var disposicao in Enum.GetValues(typeof(Disposicao)))
                 {
-                    Etapa02((Disposicao)disposicao, (int) tamanho);
+                    Disposicao _disposicao = (Disposicao)disposicao;
+                    int _tamanho = (int)tamanho;
+                    BenchmarkInteiroTempo(_disposicao, _tamanho);
+                    BenchmarkInteiroDepuracao(_disposicao, _tamanho);
+                    BenchmarkDecimalTempo(_disposicao, _tamanho);
+                    BenchmarkDecimalDepuracao(_disposicao, _tamanho);
                 }
             }
-        }
-
-        static void Main()
-        {
-            Etapa01();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace aed_lista_06_ordenacao_template
+﻿namespace aed_lista_06_ordenacao_01
 {
     internal class OrdenadorHeapNormalInt : OrdenacaoNormalInt
     {
@@ -88,7 +86,7 @@ namespace aed_lista_06_ordenacao_template
             bool ehUltimo = filho == (tam - 1);
             if (!ehUltimo)
             {
-                if(vetor[filho] < vetor[filho + 1])
+                if (vetor[filho] < vetor[filho + 1])
                 {
                     filho++;
                 }

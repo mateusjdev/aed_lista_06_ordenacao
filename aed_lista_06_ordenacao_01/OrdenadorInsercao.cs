@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace aed_lista_06_ordenacao_template
+﻿namespace aed_lista_06_ordenacao_01
 {
     internal class OrdenadorInsercaoNormalInt : OrdenacaoNormalInt
     {
@@ -23,7 +21,7 @@ namespace aed_lista_06_ordenacao_template
         }
     }
 
-    internal class OrdenadorInsercaoDepuracaoInt: OrdenacaoDepuracaoInt
+    internal class OrdenadorInsercaoDepuracaoInt : OrdenacaoDepuracaoInt
     {
         public OrdenadorInsercaoDepuracaoInt(int[] vetor) : base(vetor) { }
 

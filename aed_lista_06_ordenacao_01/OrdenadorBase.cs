@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace aed_lista_06_ordenacao_template
+namespace aed_lista_06_ordenacao_01
 {
     public abstract class OrdenacaoNormalInt
     {

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aed_lista_06_ordenacao_template", "aed_lista_06_ordenacao_template\aed_lista_06_ordenacao_template.csproj", "{83235BE8-CA55-4215-8465-10B2A55E2ACE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aed_lista_06_ordenacao_01", "aed_lista_06_ordenacao_01\aed_lista_06_ordenacao_01.csproj", "{83235BE8-CA55-4215-8465-10B2A55E2ACE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

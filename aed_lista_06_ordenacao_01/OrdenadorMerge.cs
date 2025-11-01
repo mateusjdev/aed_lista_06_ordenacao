@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-
-namespace aed_lista_06_ordenacao_template
+﻿namespace aed_lista_06_ordenacao_01
 {
     internal class OrdenadorMergeNormalInt : OrdenacaoNormalInt
     {

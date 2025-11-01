@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace aed_lista_06_ordenacao_template
+﻿namespace aed_lista_06_ordenacao_01
 {
     internal class OrdenadorBolhaNormalInt : OrdenacaoNormalInt
     {
