@@ -68,7 +68,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Selecao);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorSelecaoNormal(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorSelecaoNormalInt(GerarVetor.CopiarVetor(vetor));
                 stopwatch.Restart();
                 ordenador.Ordernar();
                 stopwatch.Stop();
@@ -84,7 +84,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Insercao);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorInsercaoNormal(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorInsercaoNormalInt(GerarVetor.CopiarVetor(vetor));
                 stopwatch.Restart();
                 ordenador.Ordernar();
                 stopwatch.Stop();
@@ -100,7 +100,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Bolha);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorBolhaNormal(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorBolhaNormalInt(GerarVetor.CopiarVetor(vetor));
                 stopwatch.Restart();
                 ordenador.Ordernar();
                 stopwatch.Stop();
@@ -116,7 +116,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Quick);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorQuickNormal(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorQuickNormalInt(GerarVetor.CopiarVetor(vetor));
                 stopwatch.Restart();
                 ordenador.Ordernar();
                 stopwatch.Stop();
@@ -132,7 +132,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Merge);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorMergeNormal(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorMergeNormalInt(GerarVetor.CopiarVetor(vetor));
                 stopwatch.Restart();
                 ordenador.Ordernar();
                 stopwatch.Stop();
@@ -148,7 +148,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Heap);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorHeapNormal(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorHeapNormalInt(GerarVetor.CopiarVetor(vetor));
                 stopwatch.Restart();
                 ordenador.Ordernar();
                 stopwatch.Stop();
@@ -190,7 +190,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Selecao);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorSelecaoDepuracao(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorSelecaoDepuracaoInt(GerarVetor.CopiarVetor(vetor));
                 ordenador.Ordernar();
                 if (!ordenador.ConferirOrdenacao())
                 {
@@ -205,7 +205,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Insercao);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorInsercaoDepuracao(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorInsercaoDepuracaoInt(GerarVetor.CopiarVetor(vetor));
                 ordenador.Ordernar();
                 if (!ordenador.ConferirOrdenacao())
                 {
@@ -220,7 +220,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Bolha);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorBolhaDepuracao(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorBolhaDepuracaoInt(GerarVetor.CopiarVetor(vetor));
                 ordenador.Ordernar();
                 if (!ordenador.ConferirOrdenacao())
                 {
@@ -235,7 +235,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Quick);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorQuickDepuracao(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorQuickDepuracaoInt(GerarVetor.CopiarVetor(vetor));
                 ordenador.Ordernar();
                 if (!ordenador.ConferirOrdenacao())
                 {
@@ -250,7 +250,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Merge);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorMergeDepuracao(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorMergeDepuracaoInt(GerarVetor.CopiarVetor(vetor));
                 ordenador.Ordernar();
                 if (!ordenador.ConferirOrdenacao())
                 {
@@ -265,7 +265,7 @@ namespace aed_lista_06_ordenacao_template
             StatusLogger.Rodando(Algoritmos.Heap);
             for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
             {
-                var ordenador = new OrdenadorHeapDepuracao(GerarVetor.CopiarVetor(vetor));
+                var ordenador = new OrdenadorHeapDepuracaoInt(GerarVetor.CopiarVetor(vetor));
                 ordenador.Ordernar();
                 if (!ordenador.ConferirOrdenacao())
                 {
@@ -282,22 +282,248 @@ namespace aed_lista_06_ordenacao_template
 
         public static void Etapa03DecimalTempo(Disposicao disposicao, int tamanho)
         {
-            // Console.WriteLine("Rodando Etapa06DecimalTempo");
-            // for(Algoritmos)
+            StatusLogger.Params(disposicao, tamanho, Execucao.Tempo, Tipo.Decimal, QUANTIDADE_EXECUCOES);
+            decimal[] vetor;
+            switch (disposicao)
+            {
+                case Disposicao.Aleatorio:
+                    vetor = GerarVetor.GerarVetorDecimalAleatorio(tamanho);
+                    break;
+                case Disposicao.Crescente:
+                    vetor = GerarVetor.GerarVetorDecimalCrescente(tamanho);
+                    break;
+                case Disposicao.Decrescente:
+                    vetor = GerarVetor.GerarVetorDecimalDecrescente(tamanho);
+                    break;
+                default:
+                    vetor = GerarVetor.GerarVetorDecimalAleatorio(tamanho);
+                    break;
+            }
+
+            Stopwatch stopwatch = new Stopwatch();
+            TimeSpan[] tempos = new TimeSpan[QUANTIDADE_EXECUCOES];
+
+            StatusLogger.Rodando(Algoritmos.Selecao);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorSelecaoNormalDecimal(GerarVetor.CopiarVetor(vetor));
+                stopwatch.Restart();
+                ordenador.Ordernar();
+                stopwatch.Stop();
+                tempos[i] = stopwatch.Elapsed;
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Selecao, tempos[0].ToString());
+
+            StatusLogger.Rodando(Algoritmos.Insercao);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorInsercaoNormalDecimal(GerarVetor.CopiarVetor(vetor));
+                stopwatch.Restart();
+                ordenador.Ordernar();
+                stopwatch.Stop();
+                tempos[i] = stopwatch.Elapsed;
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Insercao, tempos[0].ToString());
+
+            StatusLogger.Rodando(Algoritmos.Bolha);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorBolhaNormalDecimal(GerarVetor.CopiarVetor(vetor));
+                stopwatch.Restart();
+                ordenador.Ordernar();
+                stopwatch.Stop();
+                tempos[i] = stopwatch.Elapsed;
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Bolha, tempos[0].ToString());
+
+            StatusLogger.Rodando(Algoritmos.Quick);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorQuickNormalDecimal(GerarVetor.CopiarVetor(vetor));
+                stopwatch.Restart();
+                ordenador.Ordernar();
+                stopwatch.Stop();
+                tempos[i] = stopwatch.Elapsed;
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Quick, tempos[0].ToString());
+
+            StatusLogger.Rodando(Algoritmos.Merge);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorMergeNormalDecimal(GerarVetor.CopiarVetor(vetor));
+                stopwatch.Restart();
+                ordenador.Ordernar();
+                stopwatch.Stop();
+                tempos[i] = stopwatch.Elapsed;
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Merge, tempos[0].ToString());
+
+            StatusLogger.Rodando(Algoritmos.Heap);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorHeapNormalDecimal(GerarVetor.CopiarVetor(vetor));
+                stopwatch.Restart();
+                ordenador.Ordernar();
+                stopwatch.Stop();
+                tempos[i] = stopwatch.Elapsed;
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Heap, tempos[0].ToString());
+
+            Console.WriteLine();
         }
 
         public static void Etapa03DecimalDepuracao(Disposicao disposicao, int tamanho)
         {
-            // Console.WriteLine("Rodando Etapa06DecimalDepuracao");
-            // for(Algoritmos)
+            StatusLogger.Params(disposicao, tamanho, Execucao.Depuracao, Tipo.Decimal, QUANTIDADE_EXECUCOES);
+            decimal[] vetor;
+            switch (disposicao)
+            {
+                case Disposicao.Aleatorio:
+                    vetor = GerarVetor.GerarVetorDecimalAleatorio(tamanho);
+                    break;
+                case Disposicao.Crescente:
+                    vetor = GerarVetor.GerarVetorDecimalCrescente(tamanho);
+                    break;
+                case Disposicao.Decrescente:
+                    vetor = GerarVetor.GerarVetorDecimalDecrescente(tamanho);
+                    break;
+                default:
+                    vetor = GerarVetor.GerarVetorDecimalAleatorio(tamanho);
+                    break;
+            }
+
+            Int64 comparacoes = 0;
+            Int64 movimentacoes = 0;
+
+            StatusLogger.Rodando(Algoritmos.Selecao);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorSelecaoDepuracaoDecimal(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Selecao, comparacoes, movimentacoes);
+
+            StatusLogger.Rodando(Algoritmos.Insercao);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorInsercaoDepuracaoDecimal(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Insercao, comparacoes, movimentacoes);
+
+            StatusLogger.Rodando(Algoritmos.Bolha);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorBolhaDepuracaoDecimal(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Bolha, comparacoes, movimentacoes);
+
+            StatusLogger.Rodando(Algoritmos.Quick);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorQuickDepuracaoDecimal(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Quick, comparacoes, movimentacoes);
+
+            StatusLogger.Rodando(Algoritmos.Merge);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorMergeDepuracaoDecimal(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Merge, comparacoes, movimentacoes);
+
+            StatusLogger.Rodando(Algoritmos.Heap);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorHeapDepuracaoDecimal(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Heap, comparacoes, movimentacoes);
+
+            Console.WriteLine();
         }
 
         public static void Etapa02(Disposicao disposicao, int tamanho)
         {
-            // Etapa03InteiroTempo(disposicao, tamanho);
+            Etapa03InteiroTempo(disposicao, tamanho);
             Etapa03InteiroDepuracao(disposicao, tamanho);
-            // Etapa03DecimalTempo(disposicao, tamanho);
-            // Etapa03DecimalDepuracao(disposicao, tamanho);
+            Etapa03DecimalTempo(disposicao, tamanho);
+            Etapa03DecimalDepuracao(disposicao, tamanho);
         }
 
         public static void Etapa01()
