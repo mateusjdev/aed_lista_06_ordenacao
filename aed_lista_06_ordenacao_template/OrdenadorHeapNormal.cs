@@ -29,12 +29,9 @@ namespace aed_lista_06_ordenacao_template
 
         void Construir(int[] vetor, int novo)
         {
-            int i = novo;
-            int pai = Pai(i);
-            while (i > 0 && vetor[i] > vetor[pai])
+            for (int i = novo; i > 0 && vetor[i] > vetor[Pai(i)]; i = Pai(i))
             {
-                Trocar(vetor, i, pai);
-                pai = Pai(i);
+                Trocar(vetor, i, Pai(i));
             }
         }
 
@@ -48,26 +45,31 @@ namespace aed_lista_06_ordenacao_template
                 {
                     Trocar(vetor, i, filho);
                     i = filho;
-                } else
+                }
+                else
                 {
                     i = tam - 1;
                 }
             }
         }
 
-        public override void RealizarOrdenacao()
+        void HeapSort(int[] vetor, int tam)
         {
-            int tam = _vetor.Length;
             for (int novo = 1; novo < tam; novo++)
             {
-                Construir(_vetor, novo);
+                Construir(vetor, novo);
             }
 
             while (tam > 1)
             {
-                Trocar(_vetor, 0, tam - 1);
-                Reconstruir(_vetor, tam);
+                Trocar(vetor, 0, tam - 1);
+                Reconstruir(vetor, --tam);
             }
+        }
+
+        public override void RealizarOrdenacao()
+        {
+            HeapSort(_vetor, _vetor.Length);
         }
     }
 }

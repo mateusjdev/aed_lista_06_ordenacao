@@ -8,7 +8,7 @@ namespace aed_lista_06_ordenacao_template
 {
     internal class GerarVetor
     {
-        public static int[] GerarCopiaVetorInt(int[] origem)
+        public static int[] CopiarVetor(int[] origem)
         {
             int vLength = origem.Length;
             int[] destino = new int[vLength];
@@ -19,7 +19,7 @@ namespace aed_lista_06_ordenacao_template
             return destino;
         }
 
-        public static decimal[] GerarCopiaVetorDecimal(decimal[] origem)
+        public static decimal[] CopiarVetor(decimal[] origem)
         {
             int vLength = origem.Length;
             decimal[] destino = new decimal[vLength];
