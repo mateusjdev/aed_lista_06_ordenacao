@@ -1,42 +1,10 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
-using System.Reflection.Metadata.Ecma335;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace aed_lista_06_ordenacao_template
 {
-    internal class OrdenadorHeap
+    internal class OrdenadorHeapNormal : OrdenacaoNormal
     {
-        private int[] _vetor;
-
-        public OrdenadorHeap(int[] vetor)
-        {
-            _vetor = vetor;
-        }
-
-        public bool ConferirOrdenacao()
-        {
-            bool estaOrdenado = true;
-            for (int i = 1; i < _vetor.Length; i++)
-            {
-                if (_vetor[i - 1] > _vetor[i])
-                {
-                    estaOrdenado = false;
-                    i = _vetor.Length;
-                }
-            }
-            return estaOrdenado;
-        }
-
-        public static void Trocar(int[] vetor, int posA, int posB)
-        {
-            if (posA != posB)
-            {
-                int tmp = vetor[posA];
-                vetor[posA] = vetor[posB];
-                vetor[posB] = tmp;
-            }
-        }
+        public OrdenadorHeapNormal(int[] vetor) : base(vetor) { }
 
         private static int Pai(int i)
         {
@@ -59,7 +27,7 @@ namespace aed_lista_06_ordenacao_template
             return pos < (tam / 2);
         }
 
-        static void Construir(int[] vetor, int novo)
+        void Construir(int[] vetor, int novo)
         {
             int i = novo;
             int pai = Pai(i);
@@ -70,7 +38,7 @@ namespace aed_lista_06_ordenacao_template
             }
         }
 
-        static void Reconstruir(int[] vetor, int tam)
+        void Reconstruir(int[] vetor, int tam)
         {
             int i = 0;
             while (TemFilho(i, tam))
@@ -87,7 +55,7 @@ namespace aed_lista_06_ordenacao_template
             }
         }
 
-        public void Ordernar()
+        public override void RealizarOrdenacao()
         {
             int tam = _vetor.Length;
             for (int novo = 1; novo < tam; novo++)

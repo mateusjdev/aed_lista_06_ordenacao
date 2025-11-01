@@ -1,94 +1,147 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace aed_lista_06_ordenacao_template
 {
-    internal class Program
+    public abstract class OrdenacaoNormal
     {
-        const int TAMANHO_VETOR = 10000;
+        protected int[] _vetor;
 
-        public static int[] GerarCopiaVetor(int[] origem)
+        public int[] Vetor
         {
-            int vLength = origem.Length;
-            int[] destino = new int[vLength];
-            for (int i = 0; i < vLength; i++)
-            {
-                destino[i] = origem[i];
-            }
-            return destino;
+            get { return _vetor; }
+            set { _vetor = value; }
         }
 
-        public static int[] GerarVetor(int tamanho)
+        public abstract  void RealizarOrdenacao();
+
+        public bool ConferirOrdenacao()
         {
-            int[] vetor = new int[TAMANHO_VETOR];
-            var random = new Random();
-            for (int i = 0; i < vetor.Length; i++)
+            bool estaOrdenado = true;
+            for (int i = 1; i < _vetor.Length; i++)
             {
-                vetor[i] = random.Next();
+                if (_vetor[i - 1] > _vetor[i])
+                {
+                    estaOrdenado = false;
+                    i = _vetor.Length;
+                }
             }
-            return vetor;
+            return estaOrdenado;
+        }
+
+        protected void Trocar(int[] vetor, int posA, int posB)
+        {
+            if (posA != posB)
+            {
+                int tmp = vetor[posA];
+                vetor[posA] = vetor[posB];
+                vetor[posB] = tmp;
+            }
+        }
+
+        public void Ordernar()
+        {
+            if (_vetor == null || _vetor.Length == 0)
+            {
+                throw new Exception("Vetor não inicializado");
+            }
+            RealizarOrdenacao();
+        }
+
+        protected OrdenacaoNormal(int[] vetor)
+        {
+            _vetor = vetor;
+        }
+    }
+
+    internal class Program
+    {
+        public enum Disposicao
+        {
+            Crescente,
+            Decrescente,
+            Aleatorio
+        }
+
+        public enum Tamanho
+        {
+            Mil = 1000,
+            QuinhentosMil = 500000
+        }
+
+        public enum Tipo
+        {
+            Inteiro,
+            Decimal
+        }
+
+        public enum Execucao
+        {
+            Tempo,
+            Depuracao
+        }
+
+        public enum Algoritmos
+        {
+            Selecao,
+            Insercao,
+            Bolha,
+            Merge,
+            Heap,
+            Quick
+        }
+
+        const int QUANTIDADE_EXECUCOES = 10;
+
+        public static void Etapa03InteiroTempo(Disposicao disposicao, int tamanho)
+        {
+            Console.WriteLine("Rodando Etapa06InteiroTempo");
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                
+            }
+            // for(Algoritmos)
+        }
+
+        public static void Etapa03InteiroDepuracao(Disposicao disposicao, int tamanho)
+        {
+            Console.WriteLine("Rodando Etapa06InteiroDepuracao");
+            // for(Algoritmos)
+        }
+
+        public static void Etapa03DecimalTempo(Disposicao disposicao, int tamanho)
+        {
+            Console.WriteLine("Rodando Etapa06DecimalTempo");
+            // for(Algoritmos)
+        }
+
+        public static void Etapa03DecimalDepuracao(Disposicao disposicao, int tamanho)
+        {
+            Console.WriteLine("Rodando Etapa06DecimalDepuracao");
+            // for(Algoritmos)
+        }
+
+        public static void Etapa02(Disposicao disposicao, int tamanho)
+        {
+            Etapa03InteiroTempo(disposicao, tamanho);
+            Etapa03InteiroDepuracao(disposicao, tamanho);
+            Etapa03DecimalTempo(disposicao, tamanho);
+            Etapa03DecimalDepuracao(disposicao, tamanho);
+        }
+
+        public static void Etapa01()
+        {
+            foreach (var tamanho in Enum.GetValues(typeof(Tamanho)))
+            {
+                foreach (var disposicao in Enum.GetValues(typeof(Disposicao)))
+                {
+                    Etapa02((Disposicao)disposicao, (int) tamanho);
+                }
+            }
         }
 
         static void Main()
         {
-            int[] vetor = GerarVetor(TAMANHO_VETOR);
-
-            // SELEÇÂO
-            Console.WriteLine("# Ordenação via Seleção\n");
-
-            int[] vetorSelecao = GerarCopiaVetor(vetor);
-            var selecao = new OrdenadorSelecao(vetorSelecao);
-            Console.WriteLine($"Esta ordenado: {selecao.ConferirOrdenacao()}");
-            selecao.Ordernar();
-            Console.WriteLine($"Esta ordenado: {selecao.ConferirOrdenacao()}\n");
-
-            // INSERÇÂO
-            Console.WriteLine("# Ordenação via Inserção\n");
-
-            int[] vetorInsercao = GerarCopiaVetor(vetor);
-            var insercao = new OrdenadorInsercao(vetorInsercao);
-            Console.WriteLine($"Esta ordenado: {insercao.ConferirOrdenacao()}");
-            insercao.Ordernar();
-            Console.WriteLine($"Esta ordenado: {insercao.ConferirOrdenacao()}\n");
-
-            // BOLHA
-            Console.WriteLine("# Ordenação via Bolha\n");
-
-            int[] vetorBolha = GerarCopiaVetor(vetor);
-            var bolha = new OrdenadorBolha(vetorBolha);
-            Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}");
-            bolha.Ordernar();
-            Console.WriteLine($"Esta ordenado: {bolha.ConferirOrdenacao()}\n");
-
-            // MERGE
-            Console.WriteLine("# Ordenação via Merge\n");
-
-            int[] vetorMerge = GerarCopiaVetor(vetor);
-            var merge = new OrdenadorMerge(vetorMerge);
-            Console.WriteLine($"Esta ordenado: {merge.ConferirOrdenacao()}");
-            merge.Ordernar();
-            Console.WriteLine($"Esta ordenado: {merge.ConferirOrdenacao()}\n");
-
-            // QUICK
-            Console.WriteLine("# Ordenação via Quick\n");
-
-            int[] vetorQuick = GerarCopiaVetor(vetor);
-            var quick = new OrdenadorQuick(vetorQuick);
-            Console.WriteLine($"Esta ordenado: {quick.ConferirOrdenacao()}");
-            quick.Ordernar();
-            Console.WriteLine($"Esta ordenado: {quick.ConferirOrdenacao()}\n");
-
-            // HEAP
-            Console.WriteLine("# Ordenação via Heap\n");
-
-            int[] vetorHeap = GerarCopiaVetor(vetor);
-            var heap = new OrdenadorQuick(vetorHeap);
-            Console.WriteLine($"Esta ordenado: {heap.ConferirOrdenacao()}");
-            heap.Ordernar();
-            Console.WriteLine($"Esta ordenado: {heap.ConferirOrdenacao()}\n");
-
-            Console.WriteLine("Presscione qualquer tecla para continuar");
-            Console.ReadKey();
+            Etapa01();
         }
     }
 }

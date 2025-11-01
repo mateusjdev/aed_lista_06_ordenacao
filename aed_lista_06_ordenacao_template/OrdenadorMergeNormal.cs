@@ -2,38 +2,9 @@
 
 namespace aed_lista_06_ordenacao_template
 {
-    internal class OrdenadorMerge
+    internal class OrdenadorMergeNormal : OrdenacaoNormal
     {
-        private int[] _vetor;
-
-        public OrdenadorMerge(int[] vetor)
-        {
-            _vetor = vetor;
-        }
-
-        public bool ConferirOrdenacao()
-        {
-            bool estaOrdenado = true;
-            for (int i = 1; i < _vetor.Length; i++)
-            {
-                if (_vetor[i - 1] > _vetor[i])
-                {
-                    estaOrdenado = false;
-                    i = _vetor.Length;
-                }
-            }
-            return estaOrdenado;
-        }
-
-        public void Trocar(int[] vetor, int posA, int posB)
-        {
-            if (posA != posB)
-            {
-                int tmp = vetor[posA];
-                vetor[posA] = vetor[posB];
-                vetor[posB] = tmp;
-            }
-        }
+        public OrdenadorMergeNormal(int[] vetor) : base(vetor) { }
 
         private static void Intercalar(int[] vetor, int esq, int meio, int dir)
         {
@@ -65,20 +36,20 @@ namespace aed_lista_06_ordenacao_template
             }
         }
 
-        private static void Dividir(int[] vetor, int esq, int dir)
+        private static void MergeSort(int[] vetor, int esq, int dir)
         {
             if (esq < dir)
             {
                 int meio = (esq + dir) / 2;
-                Dividir(vetor, esq, meio);
-                Dividir(vetor, meio + 1, dir);
+                MergeSort(vetor, esq, meio);
+                MergeSort(vetor, meio + 1, dir);
                 Intercalar(vetor, esq, meio, dir);
             }
         }
 
-        public void Ordernar()
+        public override void RealizarOrdenacao()
         {
-            Dividir(_vetor, 0, _vetor.Length - 1);
+            MergeSort(_vetor, 0, _vetor.Length - 1);
         }
     }
 }
