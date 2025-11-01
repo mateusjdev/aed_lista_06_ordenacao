@@ -52,4 +52,60 @@ namespace aed_lista_06_ordenacao_template
             MergeSort(_vetor, 0, _vetor.Length - 1);
         }
     }
+
+    internal class OrdenadorMergeDepuracao : OrdenacaoDepuracao
+    {
+        public OrdenadorMergeDepuracao(int[] vetor) : base(vetor) { }
+
+        private void Intercalar(int[] vetor, int esq, int meio, int dir)
+        {
+            // Cria um vetor temporário para guardar os elementos intercalados
+            int tamanho = dir - esq + 1;
+            int[] vTmp = new int[tamanho];
+            int iEsq = esq;
+            int iDir = meio + 1;
+            int j = 0;
+            // Intercala os elementos dos vetores para o vetor temporário
+            while (iEsq <= meio && iDir <= dir)
+            {
+                vTmp[j++] = vetor[iEsq] <= vetor[iDir] ? vetor[iEsq++] : vetor[iDir++];
+                _comparacoes++;
+                _movimentacoes++;
+            }
+            // Atribui o restante do vetor da esquerda
+            while (iEsq <= meio)
+            {
+                vTmp[j++] = vetor[iEsq++];
+                _movimentacoes++;
+            }
+            // Atribui o restante do vetor da direita
+            while (iDir <= dir)
+            {
+                vTmp[j++] = vetor[iDir++];
+                _movimentacoes++;
+            }
+            // Substitui os elementos do vetor pelos elementos intercalados
+            for (int k = 0; k < tamanho; k++)
+            {
+                vetor[esq + k] = vTmp[k];
+                _movimentacoes++;
+            }
+        }
+
+        private void MergeSort(int[] vetor, int esq, int dir)
+        {
+            if (esq < dir)
+            {
+                int meio = (esq + dir) / 2;
+                MergeSort(vetor, esq, meio);
+                MergeSort(vetor, meio + 1, dir);
+                Intercalar(vetor, esq, meio, dir);
+            }
+        }
+
+        public override void RealizarOrdenacao()
+        {
+            MergeSort(_vetor, 0, _vetor.Length - 1);
+        }
+    }
 }

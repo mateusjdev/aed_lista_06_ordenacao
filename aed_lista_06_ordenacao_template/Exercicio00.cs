@@ -3,57 +3,6 @@ using System.Diagnostics;
 
 namespace aed_lista_06_ordenacao_template
 {
-    public abstract class OrdenacaoNormal
-    {
-        protected int[] _vetor;
-
-        public int[] Vetor
-        {
-            get { return _vetor; }
-            set { _vetor = value; }
-        }
-
-        public abstract  void RealizarOrdenacao();
-
-        public bool ConferirOrdenacao()
-        {
-            bool estaOrdenado = true;
-            for (int i = 1; i < _vetor.Length; i++)
-            {
-                if (_vetor[i - 1] > _vetor[i])
-                {
-                    estaOrdenado = false;
-                    i = _vetor.Length;
-                }
-            }
-            return estaOrdenado;
-        }
-
-        protected void Trocar(int[] vetor, int posA, int posB)
-        {
-            if (posA != posB)
-            {
-                int tmp = vetor[posA];
-                vetor[posA] = vetor[posB];
-                vetor[posB] = tmp;
-            }
-        }
-
-        public void Ordernar()
-        {
-            if (_vetor == null || _vetor.Length == 0)
-            {
-                throw new Exception("Vetor não inicializado");
-            }
-            RealizarOrdenacao();
-        }
-
-        protected OrdenacaoNormal(int[] vetor)
-        {
-            _vetor = vetor;
-        }
-    }
-
     public enum Disposicao
     {
         Crescente,
@@ -217,8 +166,118 @@ namespace aed_lista_06_ordenacao_template
 
         public static void Etapa03InteiroDepuracao(Disposicao disposicao, int tamanho)
         {
-            // Console.WriteLine("Rodando Etapa06InteiroDepuracao");
-            // for(Algoritmos)
+            StatusLogger.Params(disposicao, tamanho, Execucao.Depuracao, Tipo.Inteiro, QUANTIDADE_EXECUCOES);
+            int[] vetor;
+            switch (disposicao)
+            {
+                case Disposicao.Aleatorio:
+                    vetor = GerarVetor.GerarVetorIntAleatorio(tamanho);
+                    break;
+                case Disposicao.Crescente:
+                    vetor = GerarVetor.GerarVetorIntCrescente(tamanho);
+                    break;
+                case Disposicao.Decrescente:
+                    vetor = GerarVetor.GerarVetorIntDecrescente(tamanho);
+                    break;
+                default:
+                    vetor = GerarVetor.GerarVetorIntAleatorio(tamanho);
+                    break;
+            }
+
+            Int64 comparacoes = 0;
+            Int64 movimentacoes = 0;
+
+            StatusLogger.Rodando(Algoritmos.Selecao);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorSelecaoDepuracao(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes  = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Selecao, comparacoes, movimentacoes);
+
+            StatusLogger.Rodando(Algoritmos.Insercao);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorInsercaoDepuracao(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Insercao, comparacoes, movimentacoes);
+
+            StatusLogger.Rodando(Algoritmos.Bolha);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorBolhaDepuracao(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Bolha, comparacoes, movimentacoes);
+
+            StatusLogger.Rodando(Algoritmos.Quick);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorQuickDepuracao(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Quick, comparacoes, movimentacoes);
+
+            StatusLogger.Rodando(Algoritmos.Merge);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorMergeDepuracao(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Merge, comparacoes, movimentacoes);
+
+            StatusLogger.Rodando(Algoritmos.Heap);
+            for (int i = 0; i < QUANTIDADE_EXECUCOES; i++)
+            {
+                var ordenador = new OrdenadorHeapDepuracao(GerarVetor.CopiarVetor(vetor));
+                ordenador.Ordernar();
+                if (!ordenador.ConferirOrdenacao())
+                {
+                    throw new Exception("Ordenação não foi realizada!");
+                }
+                comparacoes = ordenador.Comparacoes;
+                movimentacoes = ordenador.Movimentacoes;
+            }
+            // TODO: Calcular média das execuções
+            StatusLogger.Finalizado(Algoritmos.Heap, comparacoes, movimentacoes);
+
+            Console.WriteLine();
         }
 
         public static void Etapa03DecimalTempo(Disposicao disposicao, int tamanho)
@@ -235,10 +294,10 @@ namespace aed_lista_06_ordenacao_template
 
         public static void Etapa02(Disposicao disposicao, int tamanho)
         {
-            Etapa03InteiroTempo(disposicao, tamanho);
+            // Etapa03InteiroTempo(disposicao, tamanho);
             Etapa03InteiroDepuracao(disposicao, tamanho);
-            Etapa03DecimalTempo(disposicao, tamanho);
-            Etapa03DecimalDepuracao(disposicao, tamanho);
+            // Etapa03DecimalTempo(disposicao, tamanho);
+            // Etapa03DecimalDepuracao(disposicao, tamanho);
         }
 
         public static void Etapa01()

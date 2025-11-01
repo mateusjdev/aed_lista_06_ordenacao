@@ -36,7 +36,7 @@ namespace aed_lista_06_ordenacao_template
             Console.WriteLine($"Finalizado algo. {algoritmo} (Ordenado) em {tempo}");
         }
 
-        public static void Finalizado(Algoritmos algoritmo, int comparacoes, int movimentacoes)
+        public static void Finalizado(Algoritmos algoritmo, Int64 comparacoes, Int64 movimentacoes)
         {
             Console.WriteLine($"Finalizado algo. {algoritmo} (Ordenado) com {comparacoes} compracações e {movimentacoes} movimentações.");
         }
